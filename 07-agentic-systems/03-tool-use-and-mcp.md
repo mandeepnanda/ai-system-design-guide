@@ -121,12 +121,14 @@ This enables enterprise MCP servers with fine-grained access control per tenant.
 
 As of May 2026, over 2,300 public MCP servers exist and major AI tools (Claude, Cursor, Windsurf) support it natively. MCP has crossed from developer tooling into consumer hardware (e.g., Elgato Stream Deck 7.4 shipped with MCP support in March 2026). Microsoft adopted MCP as a primary integration standard for Windows AI Foundry and Microsoft 365 Copilot.
 
-The MCP roadmap focuses on four pillars:
+The MCP roadmap focuses on these pillars:
 
-1. **Transport Scalability**: Evolving Streamable HTTP for stateless operation across horizontal server instances, with correct behavior behind load balancers and proxies. **MCP Server Cards** provide a `.well-known` URL for structured server metadata discovery.
-2. **Agent Communication**: Enabling agent-to-agent patterns on top of MCP's existing tool layer.
-3. **Enterprise Authentication (Q2 2026)**: OAuth 2.1 with PKCE for browser-based agents plus SAML/OIDC integration for enterprise identity providers, unlocking regulated-industry deployments.
-4. **MCP Registry (Q4 2026)**: A curated, verified server directory with security audits, usage statistics, and SLA commitments.
+1. **Transport Scalability**: Evolving Streamable HTTP toward a **stateless core** that scales horizontally on ordinary HTTP infrastructure, with correct behavior behind load balancers and proxies. **MCP Server Cards** provide a `.well-known` URL for structured server metadata discovery.
+2. **MCP Apps (server-rendered UIs)**: An extension that lets an MCP server ship an interactive UI alongside its tools, so a tool result can render as a component inside the client instead of plain text. This is the spec-level standardization of the pattern OpenAI shipped as the [Apps SDK](../09-frameworks-and-tools/07-autogen-crewai.md). It turns MCP servers from headless tool endpoints into interactive surfaces.
+3. **Tasks extension (long-running work)**: A standard way to model work that does not finish within a single request/response, so a client can kick off a long job, poll or subscribe for progress, and collect the result later. This is what makes MCP viable for agentic workloads that take minutes or hours rather than seconds.
+4. **Agent Communication**: Enabling agent-to-agent patterns on top of MCP's existing tool layer.
+5. **Enterprise Authentication (Q2 2026)**: OAuth 2.1 with PKCE for browser-based agents plus SAML/OIDC integration for enterprise identity providers, unlocking regulated-industry deployments.
+6. **MCP Registry (Q4 2026)**: A curated, verified server directory with security audits, usage statistics, and SLA commitments.
 
 **Governance**: The MCP Governance Working Group introduced a Contributor Ladder and a delegation model allowing domain-specific working groups to accept SEPs (Specification Enhancement Proposals) without full core-maintainer review.
 
